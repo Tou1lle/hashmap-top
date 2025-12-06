@@ -56,19 +56,32 @@ function HashMap() {
     return entry ? true : false;
   }
 
+  function remove(key) {
+    const bucket = getBucket(key);
+    const entry = getEntry(bucket, key);
+    if (!entry) return false;
+
+    const index = bucket.findIndex(entry => entry.key === key);
+    bucket.splice(index, 1);
+    return true;
+  }
+
   const logMap = () => {
     console.log(buckets);
   }
 
-  return { hash, logMap, set, get, has };
+  return { hash, logMap, set, get, has, remove };
 }
 
 const hm = HashMap();
 hm.set("monkey", "bananas");
 hm.set("gorilla", "melons");
-console.log(hm.get("monkey"));
-console.log(hm.get("monkeys"));
-console.log(hm.has("monkey"));
-console.log(hm.has("monkeys"));
+hm.logMap();
+console.log("Get monkey: " + hm.get("monkey"));
+console.log("Get monkeys: " + hm.get("monkeys"));
+console.log("Has monkey: " + hm.has("monkey"));
+console.log("Has monkeys: " + hm.has("monkeys"));
+console.log("Remove monkey: " + hm.remove("monkey"));
+console.log("Remove monkeys: " + hm.remove("monkeys"));
 hm.logMap();
 export { HashMap };
