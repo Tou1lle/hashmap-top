@@ -15,5 +15,6 @@ test.set("aaaa", "something");
 test.set("someth", "something")
 //test.set("wasians", "yupii");
 test.logMap();
-
-console.log(test.getGeneralLength());
+console.log("-----------------------");
+test.expandBuckets();
+test.logMap();

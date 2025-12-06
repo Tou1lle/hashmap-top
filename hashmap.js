@@ -102,11 +102,24 @@ function HashMap() {
     }, 0)
   }
 
+  function expandBuckets() {
+    capacity *= 2;
+    const newBuckets = Array(capacity).fill().map(u => []);
+    const helper = buckets.slice();
+    buckets = newBuckets;
+
+    helper.forEach(bucket => {
+      bucket.forEach(entry => {
+        set(entry.key, entry.value);
+      });
+    })
+  }
+
   const logMap = () => {
     console.log(buckets);
   }
 
-  return { hash, logMap, set, get, has, remove, length, clear, keys, values, entries, getGeneralLength };
+  return { hash, logMap, set, get, has, remove, length, clear, keys, values, entries, getGeneralLength, expandBuckets };
 }
 
 /*
