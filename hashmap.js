@@ -74,17 +74,35 @@ function HashMap() {
     buckets.forEach(bucket => bucket.splice(0, bucket.length));
   }
 
+  function keys() {
+    return buckets.reduce((accumulator, currentBucket) => {
+      currentBucket.forEach(entry => accumulator.push(entry.key));
+      return accumulator;
+    }, [])
+  }
+
+  function values() {
+    return buckets.reduce((accumulator, currentBucket) => {
+      currentBucket.forEach(entry => accumulator.push(entry.value));
+      return accumulator;
+    }, [])
+  }
+
   const logMap = () => {
     console.log(buckets);
   }
 
-  return { hash, logMap, set, get, has, remove, length, clear };
+  return { hash, logMap, set, get, has, remove, length, clear, keys, values };
 }
 
 const hm = HashMap();
 console.log("HashMap length: (0) " + hm.length());
+console.log("All keys: " + hm.keys());
+console.log("All values: " + hm.values());
 hm.set("monkey", "bananas");
 hm.set("gorilla", "melons");
+console.log("All keys: " + hm.keys());
+console.log("All values: " + hm.values());
 console.log("HashMap length (2): " + hm.length());
 hm.logMap();
 console.log("Get monkey: " + hm.get("monkey"));
@@ -109,4 +127,6 @@ hm.set("cat", "pussy");
 hm.set("gorilla", "melons");
 hm.set("monkey", "bananas");
 hm.logMap();
+console.log("All keys: " + hm.keys());
+console.log("All values: " + hm.values());
 export { HashMap };
