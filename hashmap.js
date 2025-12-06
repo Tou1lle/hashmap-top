@@ -102,6 +102,7 @@ function HashMap() {
   return { hash, logMap, set, get, has, remove, length, clear, keys, values, entries };
 }
 
+/*
 const hm = HashMap();
 console.log("HashMap length: (0) " + hm.length());
 console.log("All keys: " + hm.keys());
@@ -139,4 +140,5 @@ hm.logMap();
 console.log("All keys: " + hm.keys());
 console.log("All values: " + hm.values());
 console.log(hm.entries());
+*/
 export { HashMap };
