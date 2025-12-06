@@ -40,15 +40,27 @@ function HashMap() {
     bucket.push({key, value});
   };
 
+  function get(key) {
+    const bucket = getBucket(key);
+    const entry = getEntry(bucket, key);
+    if (entry) {
+      return entry.value;
+    }
+
+    return null;
+  }
+
   const logMap = () => {
     console.log(buckets);
   }
-  
-  return { hash, logMap, set };
+
+  return { hash, logMap, set, get };
 }
 
 const hm = HashMap();
 hm.set("monkey", "bananas");
 hm.set("gorilla", "melons");
+console.log(hm.get("monkey"));
+console.log(hm.get("monkeys"));
 hm.logMap();
 export { HashMap };
