@@ -95,11 +95,18 @@ function HashMap() {
     }, [])
   }
 
+  function getGeneralLength() {
+    return buckets.reduce((accumulator, currentBucket) => {
+      if (currentBucket.length != 0) accumulator++;
+      return accumulator;
+    }, 0)
+  }
+
   const logMap = () => {
     console.log(buckets);
   }
 
-  return { hash, logMap, set, get, has, remove, length, clear, keys, values, entries };
+  return { hash, logMap, set, get, has, remove, length, clear, keys, values, entries, getGeneralLength };
 }
 
 /*

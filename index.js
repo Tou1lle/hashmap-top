@@ -15,3 +15,5 @@ test.set("aaaa", "something");
 test.set("someth", "something")
 //test.set("wasians", "yupii");
 test.logMap();
+
+console.log(test.getGeneralLength());
