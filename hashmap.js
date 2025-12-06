@@ -88,21 +88,30 @@ function HashMap() {
     }, [])
   }
 
+  function entries() {
+    return buckets.reduce((accumulator, currentBucket) => {
+      currentBucket.forEach(entry => accumulator.push([entry.key, entry.value]));
+      return accumulator;
+    }, [])
+  }
+
   const logMap = () => {
     console.log(buckets);
   }
 
-  return { hash, logMap, set, get, has, remove, length, clear, keys, values };
+  return { hash, logMap, set, get, has, remove, length, clear, keys, values, entries };
 }
 
 const hm = HashMap();
 console.log("HashMap length: (0) " + hm.length());
 console.log("All keys: " + hm.keys());
 console.log("All values: " + hm.values());
+console.log(hm.entries());
 hm.set("monkey", "bananas");
 hm.set("gorilla", "melons");
 console.log("All keys: " + hm.keys());
 console.log("All values: " + hm.values());
+console.log(hm.entries());
 console.log("HashMap length (2): " + hm.length());
 hm.logMap();
 console.log("Get monkey: " + hm.get("monkey"));
@@ -129,4 +138,5 @@ hm.set("monkey", "bananas");
 hm.logMap();
 console.log("All keys: " + hm.keys());
 console.log("All values: " + hm.values());
+console.log(hm.entries());
 export { HashMap };
