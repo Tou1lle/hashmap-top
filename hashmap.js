@@ -66,16 +66,22 @@ function HashMap() {
     return true;
   }
 
+  function length() {
+    return buckets.reduce((accumulator, currentBucket) => accumulator + currentBucket.length, 0);
+  }
+
   const logMap = () => {
     console.log(buckets);
   }
 
-  return { hash, logMap, set, get, has, remove };
+  return { hash, logMap, set, get, has, remove, length };
 }
 
 const hm = HashMap();
+console.log("HashMap length: (0) " + hm.length());
 hm.set("monkey", "bananas");
 hm.set("gorilla", "melons");
+console.log("HashMap length (2): " + hm.length());
 hm.logMap();
 console.log("Get monkey: " + hm.get("monkey"));
 console.log("Get monkeys: " + hm.get("monkeys"));
@@ -83,5 +89,6 @@ console.log("Has monkey: " + hm.has("monkey"));
 console.log("Has monkeys: " + hm.has("monkeys"));
 console.log("Remove monkey: " + hm.remove("monkey"));
 console.log("Remove monkeys: " + hm.remove("monkeys"));
+console.log("HashMap length (1): " + hm.length());
 hm.logMap();
 export { HashMap };
