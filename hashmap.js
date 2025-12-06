@@ -50,11 +50,17 @@ function HashMap() {
     return null;
   }
 
+  function has(key) {
+    const bucket = getBucket(key);
+    const entry = getEntry(bucket, key)
+    return entry ? true : false;
+  }
+
   const logMap = () => {
     console.log(buckets);
   }
 
-  return { hash, logMap, set, get };
+  return { hash, logMap, set, get, has };
 }
 
 const hm = HashMap();
@@ -62,5 +68,7 @@ hm.set("monkey", "bananas");
 hm.set("gorilla", "melons");
 console.log(hm.get("monkey"));
 console.log(hm.get("monkeys"));
+console.log(hm.has("monkey"));
+console.log(hm.has("monkeys"));
 hm.logMap();
 export { HashMap };
